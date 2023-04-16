@@ -2,8 +2,8 @@ def matrix_transposed(matrix):
     rows_matrix = len(matrix)
     columns_matrix = len(matrix[0])
     tran_matrix = [[0 for column in range(rows_matrix)] for row in range(columns_matrix)]
-    for row in range(len(matrix)):
-        for column in range(len(matrix[0])):
+    for row in range(rows_matrix):
+        for column in range(columns_matrix):
             tran_matrix[column][row] = matrix[row][column]
     return tran_matrix
 
