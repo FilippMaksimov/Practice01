@@ -1,10 +1,14 @@
+import ReadingType.IntegerRead;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         //For integer type
         Integer[][] matrixA = {
                 {1,4},
@@ -56,6 +60,18 @@ public class Main {
         Benchmark<Double> calc3 = new Benchmark<>(Double.class, dMatrixA, dMatrixB, dAlpha, dBeta);
         for (Double[] row: calc3.dgemm()) {
             System.out.println(Arrays.stream(row).toList());
+        }
+        LaunchBenchmarkJava test = new LaunchBenchmarkJava();
+        IntegerRead intRead = new IntegerRead(test.fileRead());
+        System.out.println(test.fileRead());
+        for (Integer[] row: intRead.getMatrixA()) {
+            System.out.println((Arrays.stream(row).toList()));
+        }
+        for (Integer[] row: intRead.getMatrixB()) {
+            System.out.println((Arrays.stream(row).toList()));
+        }
+        for (Integer item: intRead.getScalars()) {
+            System.out.println(item);
         }
     }
 }
