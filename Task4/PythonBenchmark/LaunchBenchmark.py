@@ -48,8 +48,6 @@ def file_read():
 
 
 def launch_bench():
-    matrix_a = [[1, 2], [1, 2], [1, 2]]
-    matrix_b = [[2, 1], [2, 2], [2, 3]]
     matrix_a_int = file_read()[0]
     matrix_b_int = file_read()[1]
     alpha_int = file_read()[2]

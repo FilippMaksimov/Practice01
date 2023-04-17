@@ -1,6 +1,10 @@
 from Task4.PythonBenchmark import Benchmark as test
 import numpy as np
 
+# Тестовая часть кода для проверки правильности работы программы.
+# Не обязательна для выполнения!
+
+
 matrix_a = [[1, 4], [2, 3], [5, 6]]
 matrix_b = [[1, 3, 5], [2, 4, 6]]
 alpha = 2
