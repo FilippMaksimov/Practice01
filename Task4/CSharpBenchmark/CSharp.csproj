@@ -48,6 +48,7 @@
     <Compile Include="BigIntegerType\BigIntegerCalculation.cs" />
     <Compile Include="Calculations.cs" />
     <Compile Include="DoubleType\DoubleCalculation.cs" />
+    <Compile Include="InputRead.cs" />
     <Compile Include="IntegerType\IntegerCalculation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,3 +1,5 @@
+package BenchmarkCalculation;
+
 public interface Calculations<M> {
     public abstract M[][] matrixTransposing(M[][] matrix);
     public abstract M[][] matrixMultiplication(M[][] matrixA, M[][] matrixB);

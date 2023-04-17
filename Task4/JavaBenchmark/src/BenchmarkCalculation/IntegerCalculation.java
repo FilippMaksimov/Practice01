@@ -1,9 +1,13 @@
-public class DoubleCalculation implements Calculations<Double> {
+package BenchmarkCalculation;
+
+import BenchmarkCalculation.Calculations;
+
+public class IntegerCalculation implements Calculations<Integer> {
     @Override
-    public Double[][] matrixTransposing(Double[][] matrix) {
+    public Integer[][] matrixTransposing(Integer[][] matrix) {
         int rowsMatrix = matrix.length;
         int columnsMatrix = matrix[0].length;
-        Double[][] transposedMatrix = new Double[columnsMatrix][rowsMatrix];
+        Integer[][] transposedMatrix = new Integer[columnsMatrix][rowsMatrix];
         for (int row = 0; row < rowsMatrix; row++)
         {
             for (int column = 0; column < columnsMatrix; column++)
@@ -15,16 +19,16 @@ public class DoubleCalculation implements Calculations<Double> {
     }
 
     @Override
-    public Double[][] matrixMultiplication(Double[][] matrixA, Double[][] matrixB) {
+    public Integer[][] matrixMultiplication(Integer[][] matrixA, Integer[][] matrixB) {
         int rowsA = matrixA.length;
         int rowsB = matrixB.length;
         int columnsB = matrixB[0].length;
-        Double[][] res = new Double[rowsA][columnsB];
+        Integer[][] res = new Integer[rowsA][columnsB];
         for (int row = 0; row < rowsA; row++)
         {
             for (int column = 0; column < columnsB; column++)
             {
-                res[row][column] = 0.0;
+                res[row][column] = 0;
                 for (int i = 0; i < rowsB; i++)
                 {
                     res[row][column] += matrixA[row][i] * matrixB[i][column];
@@ -35,7 +39,7 @@ public class DoubleCalculation implements Calculations<Double> {
     }
 
     @Override
-    public Double[][] scalarMultiplication(Double[][] matrix, Double scalar) {
+    public Integer[][] scalarMultiplication(Integer[][] matrix, Integer scalar) {
         int rowsMatrix = matrix.length;
         int columnsMatrix = matrix[0].length;
         for (int row = 0; row < rowsMatrix; row++)
@@ -49,7 +53,7 @@ public class DoubleCalculation implements Calculations<Double> {
     }
 
     @Override
-    public Double[][] matrixSum(Double[][] matrixA, Double[][] matrixB) {
+    public Integer[][] matrixSum(Integer[][] matrixA, Integer[][] matrixB) {
         int rowsA = matrixA.length;
         int columnsA = matrixA[0].length;
         int rowsB = matrixB.length;

@@ -1,3 +1,10 @@
+package BenchmarkCalculation;
+
+import BenchmarkCalculation.BigIntegerCalculation;
+import BenchmarkCalculation.Calculations;
+import BenchmarkCalculation.DoubleCalculation;
+import BenchmarkCalculation.IntegerCalculation;
+
 import java.math.BigInteger;
 
 public class CalculationsFactory<M> {
