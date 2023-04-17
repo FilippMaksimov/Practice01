@@ -1,12 +1,10 @@
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
-public class LaunchBenchmarkJava {
-    public static List fileRead() throws IOException {
+public class InputFileRead {
+    public List fileRead() throws IOException {
         String fileName = "src/variable_data.bin";
         String line = "";
         File file = new File(fileName);

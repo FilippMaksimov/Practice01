@@ -1,6 +1,10 @@
+package BenchmarkCalculation;
+
+import BenchmarkCalculation.Calculations;
+
 import java.math.BigInteger;
 
-public class BigIntegerCalculation implements Calculations<BigInteger>{
+public class BigIntegerCalculation implements Calculations<BigInteger> {
     @Override
     public BigInteger[][] matrixTransposing(BigInteger[][] matrix) {
         int rowsMatrix = matrix.length;

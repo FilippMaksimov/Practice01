@@ -6,7 +6,6 @@ import java.util.List;
 public class IntegerRead implements DataRead<Integer> {
     private List<String> inputData;
     private int i;
-    private int emptyStringNumber;
     public IntegerRead(List<String> inputData) {
         this.inputData = inputData;
     }

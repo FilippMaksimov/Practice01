@@ -6,3 +6,11 @@ C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharp\obj\De
 C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharp\obj\Debug\CSharp.csproj.CoreCompileInputs.cache
 C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharp\obj\Debug\CSharp.exe
 C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharp\obj\Debug\CSharp.pdb
+C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharpBenchmark\bin\Debug\CSharp.exe.config
+C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharpBenchmark\bin\Debug\CSharp.exe
+C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharpBenchmark\bin\Debug\CSharp.pdb
+C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharpBenchmark\obj\Debug\CSharp.csproj.AssemblyReference.cache
+C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharpBenchmark\obj\Debug\CSharp.csproj.SuggestedBindingRedirects.cache
+C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharpBenchmark\obj\Debug\CSharp.csproj.CoreCompileInputs.cache
+C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharpBenchmark\obj\Debug\CSharp.exe
+C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharpBenchmark\obj\Debug\CSharp.pdb

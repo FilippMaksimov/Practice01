@@ -14,19 +14,13 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
+            InputRead input = new InputRead();
             //For integers
-            int[,] matrixA = { 
-                {1,4}, 
-                {2,3}, 
-                {5,6} 
-            };
-            int[,] matrixB = { 
-                {1,3,5}, 
-                {2,4,6} 
-            };
-
-            int alpha = 2;
-            int beta = 3;
+            int[,] matrixA;
+            int[,] matrixB;
+            int alpha;
+            int beta;
+            input.getIntegerData(out matrixA, out matrixB, out alpha, out beta);
             Benchmark<int, IntegerCalculation> calc = 
                 new Benchmark<int, IntegerCalculation> (matrixA, matrixB, alpha, beta);
             int[,] resMatrix = calc.Dgemm();
@@ -40,17 +34,11 @@ namespace CSharp
 
             Console.WriteLine("\n");
             //For BigIntegers
-            BigInteger[,] bigIntMatrixA = {
-                {1,4},
-                {2,3},
-                {5,6}
-            };
-            BigInteger[,] bigIntMatrixB = {
-                {1,3,5},
-                {2,4,6}
-            };
-            BigInteger bigIntAlpha = 2;
-            BigInteger bigIntBeta = 3;
+            BigInteger[,] bigIntMatrixA;
+            BigInteger[,] bigIntMatrixB;
+            BigInteger bigIntAlpha;
+            BigInteger bigIntBeta;
+            input.getBigIntegerData(out bigIntMatrixA, out bigIntMatrixB, out bigIntAlpha, out bigIntBeta);
             Benchmark<BigInteger, BigIntegerCalculation> calc2 = 
                 new Benchmark<BigInteger, BigIntegerCalculation>(bigIntMatrixA, bigIntMatrixB, bigIntAlpha, bigIntBeta);
             BigInteger[,] resMatrix2 = calc2.Dgemm();
@@ -64,17 +52,11 @@ namespace CSharp
 
             Console.WriteLine("\n");
             //For Doubles
-            double[,] dMatrixA = {
-                {1.0,4.0},
-                {2.0,3.0},
-                {5.0,6.0}
-            };
-            double[,] dMatrixB = {
-                {1.0,3.0,5.0},
-                {2.0,4.0,6.0}
-            };
-            double dAlpha = 2;
-            double dBeta = 3;
+            double[,] dMatrixA;
+            double[,] dMatrixB;
+            double dAlpha;
+            double dBeta;
+            input.getDoubleData(out dMatrixA, out dMatrixB, out dAlpha, out dBeta);
             Benchmark<double, DoubleCalculation> calc3 =
                 new Benchmark<double, DoubleCalculation>(dMatrixA, dMatrixB, dAlpha, dBeta);
             double[,] resMatrix3 = calc3.Dgemm();
