@@ -22,27 +22,41 @@ public class Main {
         String bigIntTitle = "Java bigInteger Data" + "\n";
         String doubleTitle = "Java double Data" + "\n";
 
+        List<String> dataInt = new ArrayList<>();
+        List<String> dataBigInt = new ArrayList<>();
+        List<String> dataDouble =new ArrayList<>();
+
+        for (Integer item: benchInt.benchmarkStart()) {
+            dataInt.add(item.toString());
+        }
+        for (Integer item: benchBigInt.benchmarkStart()) {
+            dataBigInt.add(item.toString());
+        }
+        for (Integer item: benchDouble.benchmarkStart()) {
+            dataDouble.add(item.toString());
+        }
+
         try(FileOutputStream fos = new FileOutputStream(fileName)) {
             int j = 0;
             byte[] intBuffer = intTitle.getBytes();
             fos.write(intBuffer, j, intBuffer.length);
-            for (Long item: benchInt.benchmarkStart()) {
-                String str = item.toString() + "\n";
-                byte[] buffer = str.toString().getBytes();
+            for (String item: dataInt) {
+                String str = item + "\n";
+                byte[] buffer = str.getBytes();
                 fos.write(buffer, j, buffer.length);
             }
             byte[] bigIntBuffer = bigIntTitle.getBytes();
             fos.write(bigIntBuffer, j, bigIntBuffer.length);
-            for (Long item: benchBigInt.benchmarkStart()) {
-                String str = item.toString() + "\n";
-                byte[] buffer = str.toString().getBytes();
+            for (String item: dataBigInt) {
+                String str = item + "\n";
+                byte[] buffer = str.getBytes();
                 fos.write(buffer, j, buffer.length);
             }
             byte[] doubleBuffer = doubleTitle.getBytes();
             fos.write(doubleBuffer, j, doubleBuffer.length);
-            for (Long item: benchDouble.benchmarkStart()) {
-                String str = item.toString() + "\n";
-                byte[] buffer = str.toString().getBytes();
+            for (String item: dataDouble) {
+                String str = item + "\n";
+                byte[] buffer = str.getBytes();
                 fos.write(buffer, j, buffer.length);
             }
             System.out.println("Файл записан успешно");
