@@ -3,8 +3,9 @@ using CSharp.IntegerType;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
-using System.Numerics;
+using System.Numerics; 
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,14 +24,9 @@ namespace CSharp
             input.getIntegerData(out matrixA, out matrixB, out alpha, out beta);
             Benchmark<int, IntegerCalculation> calc = 
                 new Benchmark<int, IntegerCalculation> (matrixA, matrixB, alpha, beta);
+            DateTime timeStart1 = DateTime.Now; 
             int[,] resMatrix = calc.Dgemm();
-            for (int i = 0; i < resMatrix.GetLength(0); i++)
-            {
-                for (int j = 0; j < resMatrix.GetLength(1); j++)
-                {
-                    Console.Write(resMatrix[i, j] + "\t");
-                }
-            }
+            long operationTime = (long)(DateTime.Now.Subtract(timeStart1).TotalSeconds) * (10^6);
 
             Console.WriteLine("\n");
             //For BigIntegers
@@ -41,14 +37,10 @@ namespace CSharp
             input.getBigIntegerData(out bigIntMatrixA, out bigIntMatrixB, out bigIntAlpha, out bigIntBeta);
             Benchmark<BigInteger, BigIntegerCalculation> calc2 = 
                 new Benchmark<BigInteger, BigIntegerCalculation>(bigIntMatrixA, bigIntMatrixB, bigIntAlpha, bigIntBeta);
+            DateTime timeStart2 = DateTime.Now;
             BigInteger[,] resMatrix2 = calc2.Dgemm();
-            for (int i = 0; i < resMatrix2.GetLength(0); i++)
-            {
-                for (int j = 0; j < resMatrix2.GetLength(1); j++)
-                {
-                    Console.Write(resMatrix2[i, j] + "\t");
-                }
-            }
+            long operationTime2 = (long)(DateTime.Now.Subtract(timeStart2).TotalSeconds) * (10^6);
+
 
             Console.WriteLine("\n");
             //For Doubles
@@ -59,14 +51,10 @@ namespace CSharp
             input.getDoubleData(out dMatrixA, out dMatrixB, out dAlpha, out dBeta);
             Benchmark<double, DoubleCalculation> calc3 =
                 new Benchmark<double, DoubleCalculation>(dMatrixA, dMatrixB, dAlpha, dBeta);
+            DateTime timeStart3 = DateTime.Now;
             double[,] resMatrix3 = calc3.Dgemm();
-            for (int i = 0; i < resMatrix3.GetLength(0); i++)
-            {
-                for (int j = 0; j < resMatrix3.GetLength(1); j++)
-                {
-                    Console.Write(resMatrix3[i, j] + "\t");
-                }
-            }
+            long operationTime3 = (long)(DateTime.Now.Subtract(timeStart3).TotalSeconds) * (10^6);
         }
     }
+
 }

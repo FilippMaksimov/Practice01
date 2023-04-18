@@ -14,6 +14,7 @@ public class Benchmark<M> {
         this.beta = beta;
         this.someClass = someClass;
     }
+    //Внести изменения - реализовать ввод параметра для количества потоков
     public M[][] dgemm() {
         Calculations<M> calc = new CalculationsFactory<M>(someClass).getSomeClass();
         M[][] transA = calc.matrixTransposing(matrixA);

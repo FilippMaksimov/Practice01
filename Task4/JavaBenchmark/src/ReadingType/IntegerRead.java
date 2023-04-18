@@ -45,18 +45,18 @@ public class IntegerRead implements DataRead<Integer> {
                 else break;
             }
         }
+        i++;
         return matrixB;
     }
 
     @Override
-    public List<Integer> getScalars() {
+    public Integer getAlpha() {
+        return Integer.parseInt(inputData.get(i));
+    }
+
+    @Override
+    public Integer getBeta() {
         i++;
-        List<Integer> scalars = new ArrayList<>();
-        Integer alpha = Integer.parseInt(inputData.get(i));
-        i++;
-        Integer beta = Integer.parseInt(inputData.get(i));
-        scalars.add(0, alpha);
-        scalars.add(1, beta);
-        return scalars;
+        return Integer.parseInt(inputData.get(i));
     }
 }
