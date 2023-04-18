@@ -4,7 +4,9 @@ import ReadingType.ReadFactory;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class BenchmarkLaunch<T> {
@@ -15,29 +17,29 @@ public class BenchmarkLaunch<T> {
         this.someClass = someClass;
         this.thread = thread;
     }
-    public List<Long> benchmarkStart() throws IOException {
+    public List<Integer> benchmarkStart() throws IOException {
         InputFileRead dataList = new InputFileRead();
         DataRead<T> data = new ReadFactory<T>(someClass, dataList.fileRead()).getSomeClass();
         T[][] matrixA = data.getMatrixA();
         T[][] matrixB = data.getMatrixB();
         T alpha = data.getAlpha();
         T beta = data.getBeta();
-        List<Long> resList = new ArrayList<>();
+        List<Integer> resList = new ArrayList<>();
         Benchmark<T> bench = new Benchmark<T>(someClass, matrixA, matrixB, alpha, beta);
-        long operationTime = 0L;
+        int diff = 0;
         for (int i=0; i != 10; i++) {
-            long startTime = Instant.now().toEpochMilli();
+            LocalDateTime dStart = LocalDateTime.now();
             //Добавить(реализовать) ниже в параметр число потоков!!
-            bench.dgemm();
-            long endTime = Instant.now().toEpochMilli();
-            operationTime += (endTime - startTime);
+            System.out.println(bench.dgemm());
+            LocalDateTime dEnd = LocalDateTime.now();
+            diff += (dEnd.getNano() - dStart.getNano()) / 1000;
         }
         //Среднее время
-        operationTime = operationTime / 10;
+        diff = diff / 10;
         int iMatrixA = matrixA.length * matrixA[0].length;
         int iMatrixB = matrixB.length * matrixB[0].length;
-        long sum = iMatrixA + iMatrixB;
-        resList.add(0, operationTime);
+        int sum = iMatrixA + iMatrixB;
+        resList.add(0, diff);
         resList.add(1, sum);
         return resList;
     }
