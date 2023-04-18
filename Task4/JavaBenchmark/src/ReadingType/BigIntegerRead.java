@@ -46,18 +46,18 @@ public class BigIntegerRead implements DataRead<BigInteger> {
                 else break;
             }
         }
+        i++;
         return matrixB;
     }
 
     @Override
-    public List<BigInteger> getScalars() {
+    public BigInteger getAlpha() {
+        return BigInteger.valueOf(Integer.parseInt(inputData.get(i)));
+    }
+
+    @Override
+    public BigInteger getBeta() {
         i++;
-        List<BigInteger> scalars = new ArrayList<>();
-        BigInteger alpha = BigInteger.valueOf(Integer.parseInt(inputData.get(i)));
-        i++;
-        BigInteger beta = BigInteger.valueOf(Integer.parseInt(inputData.get(i)));
-        scalars.add(0, alpha);
-        scalars.add(1, beta);
-        return scalars;
+        return BigInteger.valueOf(Integer.parseInt(inputData.get(i)));
     }
 }

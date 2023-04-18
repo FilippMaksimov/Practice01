@@ -45,18 +45,18 @@ public class DoubleRead implements DataRead<Double> {
                 else break;
             }
         }
+        i++;
         return matrixB;
     }
 
     @Override
-    public List<Double> getScalars() {
+    public Double getAlpha() {
+        return Double.valueOf(inputData.get(i));
+    }
+
+    @Override
+    public Double getBeta() {
         i++;
-        List<Double> scalars = new ArrayList<>();
-        Double alpha = Double.valueOf(inputData.get(i));
-        i++;
-        Double beta = Double.valueOf(inputData.get(i));
-        scalars.add(0, alpha);
-        scalars.add(1, beta);
-        return scalars;
+        return Double.valueOf(inputData.get(i));
     }
 }
