@@ -17,7 +17,7 @@ class WriteFile:
 
     @staticmethod
     def file_write(matrix1, matrix2, alpha, beta):
-        file_name = "../PythonBenchmark/variable_data.bin"
+        file_name = "../Data/variable_data.bin"
         with open(file_name, "wb") as f:
             matrix1_row = len(matrix1)
             matrix1_column = len(matrix1[0])
