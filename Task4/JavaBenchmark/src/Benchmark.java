@@ -15,12 +15,23 @@ public class Benchmark<M> {
         this.someClass = someClass;
     }
     //Внести изменения - реализовать ввод параметра для количества потоков
-    public M[][] dgemm() {
-        Calculations<M> calc = new CalculationsFactory<M>(someClass).getSomeClass();
-        M[][] transA = calc.matrixTransposing(matrixA);
-        M[][] transB = calc.matrixTransposing(matrixB);
-        M[][] constRes = calc.scalarMultiplication(calc.matrixMultiplication(transA, transB), alpha);
-        M[][] res = calc.matrixSum(constRes, calc.scalarMultiplication(constRes, beta));
-        return res;
+    public M[][] dgemm(int thread) throws Exception {
+        synchronized (this) {
+            Calculations<M> calc = new CalculationsFactory<M>(someClass).getSomeClass();
+            M[][] transA = calc.matrixTransposing(matrixA);
+            M[][] transB = calc.matrixTransposing(matrixB);
+            M[][] constRes = null;
+            if (thread > 0) {
+                constRes = calc.scalarMultiplication(calc.matrixMultiplicationThreads(transA, transB, thread), alpha);
+            }
+            else if (thread == 0) {
+                constRes = calc.scalarMultiplication(calc.matrixMultiplication(transA, transB), alpha);
+            }
+            else {
+                throw new Exception("Число потоков не может быть отрицательным!");
+            }
+            M[][] res = calc.matrixSum(constRes, calc.scalarMultiplication(constRes, beta));
+            return res;
+        }
     }
 }
