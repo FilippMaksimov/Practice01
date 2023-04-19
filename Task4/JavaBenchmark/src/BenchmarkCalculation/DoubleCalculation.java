@@ -5,6 +5,8 @@ import BenchmarkCalculation.Calculations;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class DoubleCalculation implements Calculations<Double> {
     @Override
@@ -82,24 +84,26 @@ public class DoubleCalculation implements Calculations<Double> {
         int columnsB = matrixB[0].length;
         Double[][] res = new Double[rowsA][columnsB];
         CountDownLatch latch = new CountDownLatch(rowsA);
-        List<Thread> threadList = new ArrayList<>();
-        for (int i = 0; i < threads; i++) {
-            threadList.add(new Thread(() -> {
-                synchronized (res) {
-                    for (int row = 0; row < rowsA; row++) {
+        ExecutorService exe = Executors.newFixedThreadPool(threads);
+        for (int i = 0; i < rowsA; i++) {
+            int row = i;
+            exe.submit(new Runnable() {
+                @Override
+                public void run() {
+                    synchronized (res) {
                         for (int column = 0; column < columnsB; column++) {
                             res[row][column] = 0.00;
-                            for (int j = 0; j < rowsB; j++) {
-                                res[row][column] += matrixA[row][j] * matrixB[j][column];
+                            for (int i = 0; i < rowsB; i++) {
+                                res[row][column] += matrixA[row][i] * matrixB[i][column];
                             }
                         }
+                        latch.countDown();
                     }
                 }
-                latch.countDown();
-            }));
-            threadList.get(i).start();
+            });
         }
         latch.await();
+        exe.shutdown();
         return res;
     }
 }

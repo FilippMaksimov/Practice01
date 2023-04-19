@@ -34,30 +34,16 @@ namespace CSharp.IntegerType
             int rowsB = matrixB.GetLength(0);
             int columnsB = matrixB.GetLength(1);
             int[,] res = new int[rowsA, columnsB];
-            List<Thread> threadsList = new List<Thread>();
-            CountdownEvent countdown = new CountdownEvent(rowsA);
-            for (int i = 0; i < threads; i++)
+            Parallel.For(0, rowsA - 1, new ParallelOptions {MaxDegreeOfParallelism = threads }, row =>
             {
-                threadsList.Add(new Thread(() =>
+                for (int column = 0; column < columnsB; column++)
                 {
-                    lock (res)
+                    for (int i = 0; i < rowsB; i++)
                     {
-                        for (int row = 0; row < rowsA; row++)
-                        {
-                            for (int column = 0; column < columnsB; column++)
-                            {
-                                for (int j = 0; j < rowsB; j++)
-                                {
-                                    res[row, column] += matrixA[row, j] * matrixB[j, column];
-                                }
-                            }
-                        }
+                        res[row, column] += matrixA[row, i] * matrixB[i, column];
                     }
-                    countdown.Signal();
-                }));
-                threadsList[i].Start();
-            }
-            countdown.Wait();
+                }
+            });
             return res;
         }
 

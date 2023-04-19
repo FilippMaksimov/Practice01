@@ -6,6 +6,8 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class BigIntegerCalculation implements Calculations<BigInteger> {
     @Override
@@ -83,25 +85,27 @@ public class BigIntegerCalculation implements Calculations<BigInteger> {
         int rowsB = matrixB.length;
         int columnsB = matrixB[0].length;
         BigInteger[][] res = new BigInteger[rowsA][columnsB];
+        ExecutorService exe = Executors.newFixedThreadPool(threads);
         CountDownLatch latch = new CountDownLatch(rowsA);
-        List<Thread> threadList = new ArrayList<>();
-        for (int i = 0; i < threads; i++) {
-            threadList.add(new Thread(() -> {
-                synchronized (res) {
-                    for (int row = 0; row < rowsA; row++) {
+        for (int i = 0; i < rowsA; i++) {
+            int row = i;
+            exe.submit(new Runnable() {
+                @Override
+                public void run() {
+                    synchronized (res) {
                         for (int column = 0; column < columnsB; column++) {
                             res[row][column] = BigInteger.valueOf(0);
-                            for (int j = 0; j < rowsB; j++) {
-                                res[row][column] = res[row][column].add(matrixA[row][j].multiply(matrixB[j][column]));
+                            for (int i = 0; i < rowsB; i++) {
+                                res[row][column] = res[row][column].add(matrixA[row][i].multiply(matrixB[i][column]));
                             }
                         }
+                        latch.countDown();
                     }
                 }
-                latch.countDown();
-            }));
-            threadList.get(i).start();
+            });
         }
         latch.await();
+        exe.shutdown();
         return res;
     }
 }
