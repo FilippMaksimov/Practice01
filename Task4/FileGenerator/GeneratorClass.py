@@ -27,20 +27,20 @@ class WriteFile:
 
             matrix1_size_row = str(matrix1_row) + '\n'
             matrix1_size_column = str(matrix1_column) + '\n'
-            bin_size_row1 = matrix1_size_row.encode()
-            bin_size_column1 = matrix1_size_column.encode()
+            bin_size_row1 = bytes(matrix1_size_row.encode())
+            bin_size_column1 = bytes(matrix1_size_column.encode())
 
             matrix2_size_row = '\n' + str(matrix2_row) + '\n'
             matrix2_size_column = str(matrix2_column) + '\n'
-            bin_size_row2 = matrix2_size_row.encode()
-            bin_size_column2 = matrix2_size_column.encode()
+            bin_size_row2 = bytes(matrix2_size_row.encode())
+            bin_size_column2 = bytes(matrix2_size_column.encode())
 
             f.write(bin_size_row1)
             f.write(bin_size_column1)
             for row in matrix1:
                 for item in row:
                     item = item + '\n'
-                    bt = item.encode()
+                    bt = bytes(item.encode())
                     f.write(bt)
 
             f.write(bin_size_row2)
@@ -48,12 +48,12 @@ class WriteFile:
             for row in matrix2:
                 for item in row:
                     item = item + '\n'
-                    bt = item.encode()
+                    bt = bytes(item.encode())
                     f.write(bt)
 
             alpha_format = '\n' + alpha + '\n'
             beta_format = beta + '\n'
-            bin_alpha = alpha_format.encode()
-            bin_beta = beta_format.encode()
+            bin_alpha = bytes(alpha_format.encode())
+            bin_beta = bytes(beta_format.encode())
             f.write(bin_alpha)
             f.write(bin_beta)
