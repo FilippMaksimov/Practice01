@@ -29,8 +29,11 @@ public class BenchmarkLaunch<T> {
         int diff = 0;
         for (int i=0; i != 10; i++) {
             LocalDateTime dStart = LocalDateTime.now();
-            //Добавить(реализовать) ниже в параметр число потоков!!
-            System.out.println(bench.dgemm());
+            try {
+                System.out.println(bench.dgemm(thread));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
             LocalDateTime dEnd = LocalDateTime.now();
             diff += (dEnd.getNano() - dStart.getNano()) / 1000;
         }

@@ -10,7 +10,14 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        readData(1);
+        //Запуск без использования потоков
+        readData(0);
+        //Запуск с двумя потоками
+        readData(2);
+        //Запуск с 4 потоками
+        readData(4);
+        //Запуск с 8 потоками
+        readData(8);
     }
     public static void readData(int thread) throws IOException {
         //Запустить writer!

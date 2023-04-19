@@ -1,0 +1,8 @@
+C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharpBenchmark\bin\x64\Debug\CSharpBenchmark.exe.config
+C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharpBenchmark\bin\x64\Debug\CSharpBenchmark.exe
+C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharpBenchmark\bin\x64\Debug\CSharpBenchmark.pdb
+C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharpBenchmark\obj\x64\Debug\CSharpBenchmark.csproj.AssemblyReference.cache
+C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharpBenchmark\obj\x64\Debug\CSharpBenchmark.csproj.SuggestedBindingRedirects.cache
+C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharpBenchmark\obj\x64\Debug\CSharpBenchmark.csproj.CoreCompileInputs.cache
+C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharpBenchmark\obj\x64\Debug\CSharpBenchmark.exe
+C:\Users\filma\OneDrive\Desktop\ITMO.PythonCourse\Practice01\Task4\CSharpBenchmark\obj\x64\Debug\CSharpBenchmark.pdb
