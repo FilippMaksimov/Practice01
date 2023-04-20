@@ -23,7 +23,6 @@ namespace CSharp
         }
         static void DataWrite(int thread)
         {
-            string path = "C:\\Users\\filma\\OneDrive\\Desktop\\ITMO.PythonCourse\\Practice01\\Task4\\CSharpBenchmark\\bin\\x64\\Debug\\csharp_thread" + thread.ToString() + ".bin";
             InputRead input = new InputRead();
             //For integers
             int[,] matrixA;
@@ -62,6 +61,7 @@ namespace CSharp
             DateTime timeStart3 = DateTime.Now;
             double[,] resMatrix3 = calc3.Dgemm(thread);
             long operationTime3 = (long)(DateTime.Now.Subtract(timeStart3).TotalMilliseconds);
+            string path = "C:\\Users\\filma\\OneDrive\\Desktop\\ITMO.PythonCourse\\Practice01\\Task4\\CSharpBenchmark\\bin\\x64\\Debug\\csharp" + sum + "_thread" + thread.ToString() + ".bin";
             using (BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.OpenOrCreate)))
             {
                 try

@@ -27,16 +27,11 @@ namespace CSharp
         {
             using(FileStream fs = new FileStream("C:\\Users\\filma\\OneDrive\\Desktop\\ITMO.PythonCourse\\Practice01\\Task4\\CSharpBenchmark\\bin\\x64\\Debug\\variable_data.bin", FileMode.Open))
             {
-                using (BinaryReader reader = new BinaryReader(fs, Encoding.UTF8))
+                using (StreamReader reader = new StreamReader(fs, Encoding.UTF8))
                 {
-                    string str = reader.ReadString().Normalize();
-                    List<string> list = str.Split('\n').ToList();
-                    //int i = 0;
-                    int i = 1;
-                    //int rowMatrixA = int.Parse(list[0]); //Check!
-                    int rowMatrixA = 2;
-                    int columnMatrixA = int.Parse(list[i]);
-                    i = 2;
+                    int rowMatrixA = int.Parse(reader.ReadLine());
+                    int columnMatrixA = int.Parse(reader.ReadLine());
+
                     int rowMatrixB = 0;
                     int columnMatrixB = 0;
                     string[,] matrixA = new string[rowMatrixA, columnMatrixA];
@@ -44,28 +39,21 @@ namespace CSharp
                     {
                         for (int column = 0; column < columnMatrixA; column++)
                         {
-                            matrixA[row, column] = list[i];
-                            i++;
+                            matrixA[row, column] = reader.ReadLine();
                         }
                     }
-                    i++;
-                    rowMatrixB = int.Parse(list[i]);
-                    i++;
-                    columnMatrixB = int.Parse(list[i]);
-                    i++;
+                    rowMatrixB = int.Parse(reader.ReadLine());
+                    columnMatrixB = int.Parse(reader.ReadLine());
                     string[,] matrixB = new string[rowMatrixB, columnMatrixB];
                     for (int row = 0; row < rowMatrixB; row++)
                     {
                         for (int column = 0; column < columnMatrixB; column++)
                         {
-                            matrixB[row, column] = list[i];
-                            i++;
+                            matrixB[row, column] = reader.ReadLine();
                         }
                     }
-                    //string alpha = list[i]; //Check bit
-                    //string beta = list[i+1]; //Check bit
-                    string alpha = "3";
-                    string beta = "2";
+                    string alpha = reader.ReadLine();
+                    string beta = reader.ReadLine();
                     return new DataStruct
                     {
                         matrixA = matrixA,
