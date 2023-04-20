@@ -56,7 +56,7 @@ def file_read():
             matrix_b_float, alpha_float, beta_float, matrix_a_long, matrix_b_long, alpha_long, beta_long
 
 
-def launch_bench():
+def launch_bench(thread):
     # For Integers
     matrix_a_int = file_read()[0]
     matrix_b_int = file_read()[1]
@@ -67,7 +67,7 @@ def launch_bench():
     n = 0
     while n != 10:
         time_start_int = time.time()
-        python_res_int = bench.dgemm_operation(matrix_a_int, matrix_b_int, alpha_int, beta_int)
+        python_res_int = bench.dgemm_operation(matrix_a_int, matrix_b_int, alpha_int, beta_int, thread)
         operation_time += int((time.time() - time_start_int) * 10 ** 6)
         n = n + 1
     operation_time = int(operation_time / 10)
@@ -87,7 +87,7 @@ def launch_bench():
     n = 0
     while n != 10:
         time_start_float = time.time()
-        python_res_float = bench.dgemm_operation(matrix_a_float, matrix_b_float, alpha_float, beta_float)
+        python_res_float = bench.dgemm_operation(matrix_a_float, matrix_b_float, alpha_float, beta_float, thread)
         operation_time += int((time.time() - time_start_float) * 10 ** 6)
         n = n + 1
     operation_time = int(operation_time / 10)
@@ -104,7 +104,7 @@ def launch_bench():
     n = 0
     while n != 10:
         time_start_long = time.time()
-        python_res_long = bench.dgemm_operation(matrix_a_long, matrix_b_long, alpha_long, beta_long)
+        python_res_long = bench.dgemm_operation(matrix_a_long, matrix_b_long, alpha_long, beta_long, thread)
         operation_time += int((time.time() - time_start_long) * 10 ** 6)
         n = n + 1
     operation_time = int(operation_time / 10)
@@ -114,9 +114,9 @@ def launch_bench():
     return data_list_int, data_list_float, data_list_long
 
 
-def write_data(threats, data_int, data_long, data_float):
+def write_data(threads, data_int, data_long, data_float):
     try:
-        with open(f"python_threads{threats}.bin", "wb") as f:
+        with open(f"python{data_int[1]}_threads{threads}.bin", "wb") as f:
             title_int = "Python integer Data" + '\n'
             bt = title_int.encode()
             f.write(bt)
@@ -143,4 +143,7 @@ def write_data(threats, data_int, data_long, data_float):
         print("Возникла ошибка. Файлы не удалось записать")
 
 
-write_data(1, launch_bench()[0], launch_bench()[2], launch_bench()[1])
+write_data(0, launch_bench(thread=0)[0], launch_bench(thread=0)[2], launch_bench(thread=0)[1])
+write_data(2, launch_bench(thread=2)[0], launch_bench(thread=2)[2], launch_bench(thread=2)[1])
+write_data(4, launch_bench(thread=4)[0], launch_bench(thread=4)[2], launch_bench(thread=4)[1])
+write_data(8, launch_bench(thread=8)[0], launch_bench(thread=8)[2], launch_bench(thread=8)[1])
