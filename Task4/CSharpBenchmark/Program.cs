@@ -16,10 +16,7 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
-            DataWrite(0);
             DataWrite(2);
-            DataWrite(4);
-            DataWrite(8);
         }
         static void DataWrite(int thread)
         {
