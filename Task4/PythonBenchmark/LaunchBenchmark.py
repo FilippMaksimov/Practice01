@@ -144,8 +144,18 @@ def write_data(threads, data_int, data_long, data_float):
         print("Возникла ошибка. Файлы не удалось записать")
 
 
+# Python Benchmark Launch
 if __name__ == '__main__':
     write_data(0, launch_bench(thread=0)[0], launch_bench(thread=0)[2], launch_bench(thread=0)[1])
     write_data(2, launch_bench(thread=2)[0], launch_bench(thread=2)[2], launch_bench(thread=2)[1])
     write_data(4, launch_bench(thread=4)[0], launch_bench(thread=4)[2], launch_bench(thread=4)[1])
     write_data(8, launch_bench(thread=8)[0], launch_bench(thread=8)[2], launch_bench(thread=8)[1])
+
+
+# C Sharp Benchmark Launch
+# Note: in order to launch Java and C sharp exe files, there is needed to uncomment the below code:
+'''
+os.system(os.path.abspath('../CSharpBenchmark/bin/x64/Debug/CSharpBenchmark.exe'))
+# Java Benchmark Launch
+os.system(os.path.abspath('../JavaBenchmark/out/artifacts/Java_jar/Java.jar'))
+'''
