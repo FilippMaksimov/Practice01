@@ -1,4 +1,4 @@
-from Task4.FileGenerator import GeneratorClass as file_class
+import GeneratorClass as file_class
 
 
 wf = file_class.WriteFile()

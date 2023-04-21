@@ -3,11 +3,11 @@ import os
 
 from numpy.compat import long
 
-from Task4.PythonBenchmark import Benchmark as bench
+import Benchmark as bench
 
 
 def file_read():
-    with open(os.path.abspath("variable_data.bin"), "rb") as f:
+    with open(os.path.abspath('../Data/variable_data.bin'), "rb") as f:
         s = f.readline()
         row_a = int(s)
         s = f.readline()
