@@ -42,6 +42,7 @@ namespace CSharp
                             matrixA[row, column] = reader.ReadLine();
                         }
                     }
+                    string empty1 = reader.ReadLine();
                     rowMatrixB = int.Parse(reader.ReadLine());
                     columnMatrixB = int.Parse(reader.ReadLine());
                     string[,] matrixB = new string[rowMatrixB, columnMatrixB];
@@ -52,6 +53,7 @@ namespace CSharp
                             matrixB[row, column] = reader.ReadLine();
                         }
                     }
+                    string empty3 = reader.ReadLine();
                     string alpha = reader.ReadLine();
                     string beta = reader.ReadLine();
                     return new DataStruct
