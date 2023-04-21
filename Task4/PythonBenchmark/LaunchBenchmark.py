@@ -68,7 +68,7 @@ def launch_bench(thread):
     while n != 10:
         time_start_int = time.time()
         python_res_int = bench.dgemm_operation(matrix_a_int, matrix_b_int, alpha_int, beta_int, thread)
-        operation_time += int((time.time() - time_start_int) * 10 ** 6)
+        operation_time += int((time.time() - time_start_int) * 10 ** 3)
         n = n + 1
     operation_time = int(operation_time / 10)
     items_a = len(matrix_a_int) * len(matrix_a_int[0])
@@ -138,12 +138,13 @@ def write_data(threads, data_int, data_long, data_float):
                 s = str(item) + '\n'
                 bs = s.encode()
                 f.write(bs)
-        print("Файлы успешно записаны")
+        print("Файл успешно записан")
     except IOError:
         print("Возникла ошибка. Файлы не удалось записать")
 
 
-write_data(0, launch_bench(thread=0)[0], launch_bench(thread=0)[2], launch_bench(thread=0)[1])
-write_data(2, launch_bench(thread=2)[0], launch_bench(thread=2)[2], launch_bench(thread=2)[1])
-write_data(4, launch_bench(thread=4)[0], launch_bench(thread=4)[2], launch_bench(thread=4)[1])
-write_data(8, launch_bench(thread=8)[0], launch_bench(thread=8)[2], launch_bench(thread=8)[1])
+if __name__ == '__main__':
+    write_data(0, launch_bench(thread=0)[0], launch_bench(thread=0)[2], launch_bench(thread=0)[1])
+    write_data(2, launch_bench(thread=2)[0], launch_bench(thread=2)[2], launch_bench(thread=2)[1])
+    write_data(4, launch_bench(thread=4)[0], launch_bench(thread=4)[2], launch_bench(thread=4)[1])
+    write_data(8, launch_bench(thread=8)[0], launch_bench(thread=8)[2], launch_bench(thread=8)[1])
