@@ -152,10 +152,4 @@ if __name__ == '__main__':
     write_data(8, launch_bench(thread=8)[0], launch_bench(thread=8)[2], launch_bench(thread=8)[1])
 
 
-# C Sharp Benchmark Launch
-# Note: in order to launch Java and C sharp exe files, there is needed to uncomment the below code:
-'''
-os.system(os.path.abspath('../CSharpBenchmark/bin/x64/Debug/CSharpBenchmark.exe'))
-# Java Benchmark Launch
-os.system(os.path.abspath('../JavaBenchmark/out/artifacts/Java_jar/Java.jar'))
-'''
+# Note: in order to launch Java, Python and C sharp Benchmark at one, there is needed to use LaunchThreeLang.py.
